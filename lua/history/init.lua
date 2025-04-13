@@ -218,9 +218,11 @@ M.setup = function(opts)
 				dir = dir or ""
 				filename = filename or filepath
 				local lastname = filepath:match("([^\\/]*)$")
-				local paddingSize = 10 -- Adjust this as necessary
+				local paddingSize = 20 -- Adjust this as necessary
+				local paddingSize2 = 50 -- Adjust this as necessary
 				-- Ensure that the lastname is padded to the right to match the length of the longest string
-				local formattedLastName = string.format("%-" .. paddingSize .. "s", lastname)
+				local formattedFilePath= string.format("%-" .. paddingSize2 .. "s", filename )
+				local formattedLastName = string.format("%-" .. paddingSize .. "s", lastname )
 
 				-- Create styled line
 				local line = NuiLine()
@@ -230,7 +232,7 @@ M.setup = function(opts)
 				end
 				line:append(NuiText(dir, "Comment"))
 				line:append(formattedLastName .. " | ")
-				line:append(NuiText(filename, "Normal"))
+				line:append(NuiText(formattedFilePath, "Normal"))
 
 				local item = Menu.item(line, { lastname = lastname, filepath = filepath })
 				table.insert(lines, item)
